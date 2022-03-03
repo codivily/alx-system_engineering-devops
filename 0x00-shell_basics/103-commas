@@ -1,2 +1,2 @@
 #!/bin/bash
-ls -1vmF
+ls -1vmaF
