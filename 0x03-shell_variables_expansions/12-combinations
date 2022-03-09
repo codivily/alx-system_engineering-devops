@@ -1,2 +1,2 @@
 #!/bin/bash
-echo {a..z}{a..z} | sed 's/oo//' | tr -s " " "\n"
+echo {a..n}{a..z} {p..z}{a..z} | tr -s " " "\n"
