@@ -2,6 +2,7 @@
 # This script gives you information about the `school` file
 
 filename="school"
+
 if [[ -e "$filename" ]]; then
 	echo "$filename file exists"
 	if [[ -s "$filename" ]]; then
