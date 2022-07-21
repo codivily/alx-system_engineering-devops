@@ -2,9 +2,9 @@
 # This scripts displays "Best School" 10 times but Hi on 9th iteration
 
 n=1
-while [[ $n -le 10 ]] 
+while [[ $n -le 11 ]] 
 do
-	if [[ $n -eq 9 ]]
+	if [[ $n -eq 10 ]]
 	then
 		echo "Hi"
 	else
