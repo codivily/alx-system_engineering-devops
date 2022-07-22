@@ -2,7 +2,7 @@
 # This script displays `To infinity and beyond` indefinitely.
 
 _term() {
-	echo "I am invicible!!!"
+	echo "I am invincible!!!"
 }
 
 trap _term SIGTERM
