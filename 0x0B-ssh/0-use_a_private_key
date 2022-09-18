@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+cat ~/.ssh/school | ssh 'ubuntu'@'44.210.78.223'
