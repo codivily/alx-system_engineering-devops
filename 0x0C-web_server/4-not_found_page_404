@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+# Installs nginx web server on a new ubuntu server
+sudo apt update
+sudo apt install -y nginx
+sudo ufw allow 'Nginx HTTP'
+sudo mkdir -p /var/www/codivily.tech/html
+sudo chown -R "$USER":"$USER" /var/www/codivily.tech/html
+echo "Hello World!" | sudo tee /var/www/codivily.tech/html/index.html
+echo "Ceci n'est pas une page" | sudo tee /var/www/codivily.tech/html/404error.html
+sudo cat <<EOT | sudo tee /etc/nginx/sites-available/codivily.tech
+server {
+        listen 80;
+        listen [::]:80;
+
+        server_name codivily.tech;
+
+        root /var/www/codivily.tech/html;
+        index index.html;
+	
+	error_page 404 /error404.html;
+
+        location /redirect_me {
+                rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;
+        }
+}
+
+EOT
+sudo ln -f -s /etc/nginx/sites-available/codivily.tech /etc/nginx/sites-enabled/
+sudo service nginx reload
