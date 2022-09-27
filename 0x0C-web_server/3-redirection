@@ -2,6 +2,7 @@
 # Configure your Nginx server sot that /redirect_me is redirecting ot another page 
 sudo apt update
 sudo apt install -y nginx
+sudo apt install -y sed
 sudo ufw allow 'Nginx HTTP'
 echo "Hello World!" | sudo tee /var/www/html/index.html
 sudo sed -i 's/^}/    rewrite \^\/redirect_me http:\/\/youtube.com\/watch\?v=QH2-TGULwu4 permanent;\n}/' /etc/nginx/sites-enabled/default
