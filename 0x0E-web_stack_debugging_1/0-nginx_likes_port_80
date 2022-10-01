@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
 # stop apache server and start nginx
 sudo service apache2 stop
+sudo apt install -y nginx
 sudo service nginx start
