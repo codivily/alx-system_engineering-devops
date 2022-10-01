@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# install nginx and restart service on port 80
+sudo apt update
+sudo apt install -y nginx
+sudo apt install -y lsof
+sudo kill -9 "$(sudo lsof -t -i:80)"
+sudo service nginx restart
