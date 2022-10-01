@@ -1,5 +1,3 @@
 #!/usr/bin/env bash
-#Fix server and start required services
-sudo netstat -lpn
-sudo service --status-all
-sudo service apache2 start
+# Fix server webstack  by restarting the apache servier
+sudo service apache2 restart
