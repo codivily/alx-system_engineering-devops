@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# A shorter debuggin script for nginx startup fix
+sudo sed -i "s/ipv6only=on//" /etc/nginx/sites-available/default
+sudo ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+sudo service nginx restart
