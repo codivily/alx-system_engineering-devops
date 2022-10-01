@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # stop apache server and start nginx
-sudo sed -i "s/ipv6only=on//" /etc/nginx/sites-available/default
-sudo rm /etc/nginx/sites-enabled/default
+sudo sed -i "s/ipv6only=on/ipv6only=off/" /etc/nginx/sites-available/default
+sudo -f rm /etc/nginx/sites-enabled/default
 sudo ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
 sudo service nginx restart
