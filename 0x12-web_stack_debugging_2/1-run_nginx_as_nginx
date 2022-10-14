@@ -1,27 +1,28 @@
 #!/usr/bin/env bash
 # configure the container to run nginx under nginx user on port 8080
 
-#if ! id nginx &>/dev/null; then
-# echo "nginx user is missing"
-#fi
+# Create nginx user
+useradd nginx
+usermod -a -G adm,www-data nginx
+usermod -L nginx
 
-cat <<EOF | tee -a /home/nginx/.profile
-alias apt="printf ''" #the user won't be able to run this
-alias apt-get="printf ''" #the user won't be able to run this 
-alias aptitude="printf ''" #the user wont't be able to run this
-EOF
-
-echo "user nginx;" | tee -a /etc/nginx/nginx.conf
+#cat <<EOF | tee -a /home/nginx/.profile
+#alias apt="printf ''" #the user won't be able to run this
+#alias apt-get="printf ''" #the user won't be able to run this 
+#alias aptitude="printf ''" #the user wont't be able to run this
+#EOF
 
 #
-sudo chown -R nginx /var/www/
+sudo chown -R nginx:nginx /var/www/
+sudo chown -R nginx:nginx /var/log/nginx
 
 # sudo usermod -a -G sudo nginx
 sudo sed -i "s/ 80 default_server/ 8080 default_server/" /etc/nginx/sites-available/default
 sudo sed -i "s/:80 default_server/:8080 default_server/" /etc/nginx/sites-available/default
+sudo sed -i "s/user www-data;/user nginx;/" /etc/nginx/nginx.conf
 
 # stop nginx service
 sudo service nginx stop
 
 # start nginx service as nginx user
-sudo -u nginx service nginx start
+sudo nginx -c /etc/nginx/nginx.conf
