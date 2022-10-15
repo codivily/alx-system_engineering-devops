@@ -1,28 +1,14 @@
 #!/usr/bin/env bash
 # configure the container to run nginx under nginx user on port 8080
 
-# Create none loggin homeless nginx user
-useradd --no-create-home nginx
-usermod -L nginx
-
-# Update ownerships
-sudo chown -R nginx:nginx /etc/nginx/
-sudo chown -R nginx:nginx /var/www/
-sudo chown -R nginx:nginx /var/log/nginx/
+chown nginx:nginx /etc/nginx/nginx.conf
+chown nginx:nginx /etc/nginx/sites-available/default
+chmod u+rwx /etc/nginx/nginx.conf
 
 # Update nginx config files (ports)
-sudo sed -i "s/ 80 default_server/ 8080 default_server/" /etc/nginx/sites-available/default
-sudo sed -i "s/:80 default_server/:8080 default_server/" /etc/nginx/sites-available/default
+sed -i "/s/#user www-data/user nginx/" /etc/nginx/nginx.conf
+sed -i "/s/80/8080/" /etc/nginx/sites-available/default
 
-# Update nginx user
-sudo sed -i "s/user www-data;/user nginx;/" /etc/nginx/nginx.conf
-sudo sed -i "s/#user/user/" /etc/nginx/nginx.conf
-
-#stop apache2 if running
 pkill apache2
 
-# Stop nginx server
-sudo service nginx stop
-
-# Run nginx as nginx user
-sudo -u nginx service nginx start
+su nginx service nginx restart
