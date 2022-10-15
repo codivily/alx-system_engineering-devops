@@ -16,9 +16,13 @@ sudo sed -i "s/:80 default_server/:8080 default_server/" /etc/nginx/sites-availa
 
 # Update nginx user
 sudo sed -i "s/user www-data;/user nginx;/" /etc/nginx/nginx.conf
+sudo sed -i "s/#user/user/" /etc/nginx/nginx.conf
+
+#stop apache2 if running
+pkill apache2
 
 # Stop nginx server
 sudo service nginx stop
 
 # Run nginx as nginx user
-sudo -u nginx nginx -c /etc/nginx/nginx.conf
+sudo -u nginx service nginx start
