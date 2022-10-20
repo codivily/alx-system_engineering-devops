@@ -31,9 +31,6 @@ if __name__ == '__main__':
         sys.exit(0)
 
     user = users(userId)
-    if not user:
-        sys.exit(0)
-
     todos = todos(userId)
     completed_todos = [todo for todo in todos if todo['completed']]
 
