@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 """Returns information about employee TODO list progress"""
+import json
 import requests
 import sys
-import json
 
 
 def users(id):
