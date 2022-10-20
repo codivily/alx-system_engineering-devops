@@ -27,6 +27,9 @@ if __name__ == '__main__':
 
     userId = sys.argv[1]
 
+    if not userId.isnumeric():
+        sys.exit(0)
+
     user = users(userId)
     todos = todos(userId)
     completed_todos = [todo for todo in todos if todo['completed']]
