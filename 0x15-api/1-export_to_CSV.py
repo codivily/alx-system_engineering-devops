@@ -39,7 +39,7 @@ if __name__ == '__main__':
     filename = '{}.csv'.format(userId)
 
     with open(filename, 'a+') as the_file:
-        line = '"{}", "{}", "{}", "{}"\n'
+        line = '"{}","{}","{}","{}"\n'
         for todo in todos:
             the_file.write(line.format(
                 userId,
