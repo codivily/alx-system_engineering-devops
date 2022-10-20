@@ -22,6 +22,9 @@ def todos(userId, done=None):
 
 
 if __name__ == '__main__':
+    if len(sys.argv) == 1:
+        sys.exit(0)
+
     userId = sys.argv[1]
 
     user = users(userId)
