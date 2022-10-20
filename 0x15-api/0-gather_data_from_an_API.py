@@ -43,4 +43,4 @@ if __name__ == '__main__':
         len(todos)))
 
     for todo in completed_todos:
-        print('\t' + todo['title'])
+        print('\t ' + todo['title'])
