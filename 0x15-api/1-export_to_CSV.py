@@ -31,13 +31,18 @@ if __name__ == '__main__':
         sys.exit(0)
 
     user = users(userId)
+    if not user:
+        sys.exit(0)
+
     todos = todos(userId)
-    completed_todos = [todo for todo in todos if todo['completed']]
 
-    print('Employee {} is done with tasks({}/{}):'.format(
-        user['name'],
-        len(completed_todos),
-        len(todos)))
+    filename = '{}.csv'.format(userId)
 
-    for todo in completed_todos:
-        print('\t' + todo['title'])
+    with open(filename, 'a+') as the_file:
+        line = '"{}", "{}", "{}", "{}"\n'
+        for todo in todos:
+            the_file.write(line.format(
+                userId,
+                user['username'],
+                todo['completed'],
+                todo['title']))
