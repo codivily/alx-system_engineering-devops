@@ -11,7 +11,7 @@ frontend haproxy-main
 
 backend web-backend
         balance roundrobin
-        server websvr1 44.200.63.37:80 check
-        server websvr2 18.206.15.67:80 check
+        server websvr1 107.23.209.127:80 check
+        server websvr2 54.237.42.222:80 check
 EOT
 sudo service haproxy restart
