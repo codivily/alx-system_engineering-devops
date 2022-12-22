@@ -35,12 +35,12 @@ defaults
 
 frontend www.codivily.tech
         bind *:80
-        bind *:443 ssl crt /etc/ssl/www.codivily.tech/www.codivily.tech.pem
+        bind *:443 ssl crt /etc/ssl/www.codivily.tech.pem
         http-request redirect scheme https code 301 unless { ssl_fc }
         option forwardfor
         default_backend webservers
 
 backend webservers
         balance roundrobin
-        server serverweb01 44.200.63.37:80
-        server serverweb02 18.206.15.67:80
+        server serverweb01 107.23.209.127:80 check 
+        server serverweb02 54.237.42.222:80 check
