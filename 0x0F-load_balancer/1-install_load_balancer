@@ -2,6 +2,7 @@
 # Configure your Nginx server sot that /redirect_me is redirecting ot another page
 sudo apt update
 sudo apt install -y haproxy=2.0.\*
+sudo sed -i 's/^defaults$/defaults\n\t\tno option http-use-htx/' /etc/haproxy/haproxy.cfg
 
 cat <<EOT | sudo tee -a /etc/haproxy/haproxy.cfg
 frontend haproxy-main
