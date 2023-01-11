@@ -1,0 +1,10 @@
+#!/usr/bin/bash
+# A script to backup the database into a .tar.gz file
+# Script receives one argument - the db root user password
+archive_file_name="$(date +%d-%m-%Y).tar.gz"
+backup_file_name="backup.sql"
+pwd="$1"
+# create backup
+mysqldump -h localhost -u root -p"$pwd" --all-databases > "$backup_file_name"
+# archiving backup
+tar -czvf "$archive_file_name" "$backup_file_name"
