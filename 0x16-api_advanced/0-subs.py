@@ -7,6 +7,11 @@ import requests
 
 
 def number_of_subscribers(subreddit):
+    """
+       Return the number of subscribers given a subreddit
+    """
+    if isinstance(subreddit, str) = False:
+        return 0
     url = 'https://www.reddit.com/r/' + subreddit + '/about.json'
     res = requests.get(url, headers={'User-Agent': "0x16-api_advanced:alx"},
                        allow_redirects=False)
