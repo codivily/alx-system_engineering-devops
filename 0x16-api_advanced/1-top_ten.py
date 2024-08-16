@@ -7,6 +7,9 @@ import requests
 
 
 def top_ten(subreddit):
+    if not isinstance(subreddit, str):
+        print(None)
+        return
     url = 'https://www.reddit.com/r/' + subreddit + '/hot.json?limit=10'
     headers = {'User-Agent': '0x16-api_advanced:alx'}
     res = requests.get(url, headers=headers, allow_redirects=False)
