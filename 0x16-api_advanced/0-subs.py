@@ -8,7 +8,8 @@ import requests
 
 def number_of_subscribers(subreddit):
     url = 'https://www.reddit.com/r/' + subreddit + '/about.json'
-    res = requests.get(url, headers={'User-Agent': "0x16-api_advanced:alx"}, allow_redirects=False)
+    res = requests.get(url, headers={'User-Agent': "0x16-api_advanced:alx"},
+                       allow_redirects=False)
     if res.status_code == requests.codes.ok:
         data = res.json()['data']
         if 'subscribers' not in data:
